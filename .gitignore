@@ -1,0 +1,6 @@
+.env
+sbux.json
+primer-dataframe.json
+
+.venv
+.idea

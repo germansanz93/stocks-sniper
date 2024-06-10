@@ -1,0 +1,283 @@
+{
+    "Collapsed": {
+        "rows": [
+            {
+                "label": "Price/Sales",
+                "salDataId": "price.sales.label",
+                "datum": [
+                    "3.8067",
+                    "4.741",
+                    "3.8723",
+                    "3.7493",
+                    "3.6333",
+                    "4.0901",
+                    "5.3758",
+                    "4.7717",
+                    "3.5635",
+                    "3.0725",
+                    "2.5702",
+                    "3.722",
+                    "2.7313"
+                ],
+                "subLevel": ""
+            },
+            {
+                "label": "Price/Earnings",
+                "salDataId": "price.earnings.label",
+                "datum": [
+                    "30.2768",
+                    "32.9835",
+                    "29.2211",
+                    "29.1523",
+                    "19.8765",
+                    "30.1096",
+                    "135.4177",
+                    "33.0424",
+                    "35.053",
+                    "26.8184",
+                    "22.6116",
+                    "33.5943",
+                    "24.9066"
+                ],
+                "subLevel": ""
+            },
+            {
+                "label": "Price/Cash Flow",
+                "salDataId": "price.cash.flow.label",
+                "datum": [
+                    "22.2219",
+                    "26.1791",
+                    "19.5499",
+                    "20.5489",
+                    "17.8763",
+                    "31.9051",
+                    "29.5796",
+                    "21.3654",
+                    "17.5985",
+                    "15.4767",
+                    "12.5765",
+                    "19.6887",
+                    "16.9607"
+                ],
+                "subLevel": ""
+            },
+            {
+                "label": "Price/Book",
+                "salDataId": "price.book.label",
+                "datum": [
+                    "11.6647",
+                    "15.3232",
+                    "13.8385",
+                    "15.215",
+                    "72.0872",
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "4.21"
+                ],
+                "subLevel": ""
+            }
+        ],
+        "columnDefs": [
+            "Calendar",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "Current",
+            "5-Yr",
+            "Index"
+        ],
+        "columnDefs_labels": [
+            "tabular.data.label.column.year",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "valuation.headers.current",
+            "valuation.headers.fiveyear",
+            "valuation.headers.index"
+        ],
+        "userType": null,
+        "footer": {
+            "asOfLabel": "As of",
+            "asOfDate": "2024-06-03T00:00:00.000",
+            "indexLabel": "Index:",
+            "indexName": "Morningstar US Market TR USD",
+            "enterpriseValueCurrency": "USD"
+        }
+    },
+    "Expanded": {
+        "rows": [
+            {
+                "label": "Price/Forward Earnings",
+                "salDataId": "price.forward.earnings.label",
+                "datum": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    "28.9211",
+                    "37.0879",
+                    "34.2018",
+                    "29.1765",
+                    "23.1908",
+                    "22.2833",
+                    "27.9551",
+                    null
+                ],
+                "subLevel": ""
+            },
+            {
+                "label": "PEG Ratio",
+                "salDataId": "peg.ratio.label",
+                "datum": [
+                    "0.7739",
+                    "1.3724",
+                    "1.5717",
+                    "1.7056",
+                    "0.0913",
+                    "1.8047",
+                    "12.6509",
+                    "2.4932",
+                    "4.6652",
+                    "13.3041",
+                    "2.4141",
+                    "1.7898",
+                    null
+                ],
+                "subLevel": ""
+            },
+            {
+                "label": "Earnings Yield %",
+                "salDataId": "earnings.yield.label",
+                "datum": [
+                    "3.3",
+                    "3.03",
+                    "3.42",
+                    "3.43",
+                    "5.03",
+                    "3.32",
+                    "0.74",
+                    "3.03",
+                    "2.85",
+                    "3.73",
+                    "4.42",
+                    "1.99",
+                    null
+                ],
+                "subLevel": ""
+            },
+            {
+                "label": "Enterprise Value (Bil)",
+                "salDataId": "enterprise.value.label",
+                "datum": [
+                    "61.60",
+                    "89.87",
+                    "82.15",
+                    "82.96",
+                    "80.40",
+                    "112.24",
+                    "146.19",
+                    "154.22",
+                    "134.49",
+                    "129.79",
+                    "115.03",
+                    "126.53",
+                    null
+                ],
+                "subLevel": "",
+                "orderOfMagnitude": "Bil"
+            },
+            {
+                "label": "Enterprise Value/EBIT",
+                "salDataId": "enterprise.value.ebit.label",
+                "datum": [
+                    "19.9942",
+                    "22.8649",
+                    "19.6912",
+                    "20.0643",
+                    "13.9616",
+                    "23.8783",
+                    "93.6126",
+                    "26.8841",
+                    "29.1246",
+                    "22.1074",
+                    "19.5814",
+                    "27.8292",
+                    null
+                ],
+                "subLevel": ""
+            },
+            {
+                "label": "Enterprise Value/EBITDA",
+                "salDataId": "enterprise.value.ebitda.label",
+                "datum": [
+                    "16.0868",
+                    "18.4755",
+                    "15.7919",
+                    "15.9483",
+                    "11.3808",
+                    "18.2512",
+                    "47.6997",
+                    "21.2408",
+                    "21.8785",
+                    "17.728",
+                    "15.5466",
+                    "20.9443",
+                    null
+                ],
+                "subLevel": ""
+            }
+        ],
+        "columnDefs": [
+            "Calendar",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "Current",
+            "5-Yr",
+            "Index"
+        ],
+        "columnDefs_labels": [
+            "tabular.data.label.column.year",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "valuation.headers.current",
+            "valuation.headers.fiveyear",
+            "valuation.headers.index"
+        ]
+    }
+}
