@@ -1,9 +1,25 @@
 import pandas as pd
 
-from files_service import read_valuation_from_file, save_in_file
+from src.services.morningstar_service import call_morningstar_valuation, call_morningstar_stock_id
+from src.services.files_service import assert_directory_existence, create_directory, save_in_file, \
+    read_valuation_from_file
 
-def get_stock_info():
 
+def get_stock_info(ticker):
+    # container = call_morningstar_valuation(ticker)
+    # print(container)
+    is_data_present = assert_directory_existence(ticker)
+    if not is_data_present:
+        dir = create_directory(ticker)
+        stock_response = call_morningstar_stock_id(ticker)
+        save_in_file(f'{dir}/{ticker}-search.json', stock_response)
+        stock_id = stock_response['page']['performanceID']
+        save_in_file(f'{dir}/{ticker}-valuation.json', call_morningstar_valuation(stock_id))
+    else:
+        print('Files for that stock are already present..')
+
+
+def stock_data():
     # container = call_morningstar_valuation()
     # save_in_file('sbux.json', container)
     container = read_valuation_from_file('../sbux.json')

@@ -5,6 +5,8 @@ from PyQt6.QtWidgets import (
     QHBoxLayout
 )
 
+from src.services.stock_service import get_stock_info
+
 
 class SearchWidget(QWidget):
     def __init__(self):
@@ -23,3 +25,4 @@ class SearchWidget(QWidget):
 
     def search(self):
         print("Search", self.search_bar.text())
+        get_stock_info(self.search_bar.text())
