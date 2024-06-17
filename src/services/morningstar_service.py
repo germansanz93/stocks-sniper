@@ -7,6 +7,13 @@ load_dotenv()
 api_key = os.getenv('API_KEY')
 
 
+def call_search(uri):
+    with requests.Session() as s:
+        resp = s.get(uri)
+        container = resp.json()
+        return container
+
+
 def call_get(uri):
     headers = {
         'apikey': api_key,
@@ -29,12 +36,17 @@ def call_get(uri):
         s.headers.update(headers)
         resp = s.get(uri, params=payload)
         container = resp.json()
-        return container
+        return container['components']['usSecurities']['payload']['results']
 
 
-def call_morningstar_stock_id(ticker):
-    search_uri = f'https://www.morningstar.com/api/v2/stocks/xnas/{ticker}/quote'
+def search_ticker(search):
+    search_uri = f'https://www.morningstar.com/api/v2/search?query={search}'
     return call_get(search_uri)
+
+
+def call_morningstar_stock_id(exchange, ticker):
+    stock_id_uri = f'https://www.morningstar.com/api/v2/stocks/{exchange}/{ticker}/quote'
+    return call_get(stock_id_uri)
 
 
 def call_morningstar_valuation(stock_code):
