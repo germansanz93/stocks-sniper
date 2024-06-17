@@ -3,9 +3,9 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QWidget,
     QHBoxLayout,
-    QListWidget,
     QVBoxLayout,
-    QListWidgetItem
+    QTableWidget,
+    QTableWidgetItem,
 )
 
 from src.services.stock_service import get_stock_info, search_stock
@@ -18,7 +18,9 @@ class SearchWidget(QWidget):
 
         self.search_bar = QLineEdit(self)
         self.search_button = QPushButton("Search", self)
-        self.results_display = QListWidget(self)
+        self.results_display = QTableWidget(self)
+
+        self.results_display.cellClicked.connect(self.row_click)
 
         self.search_button.pressed.connect(self.search)
 
@@ -35,18 +37,34 @@ class SearchWidget(QWidget):
     def search(self):
         query = self.search_bar.text()
         print("Search", query)
-        self.results_display.clear()
-        self.results_display.addItem(f"Searching for: {query}")
+        self.results_display.setColumnCount(1)
+        self.results_display.setRowCount(0)
+        self.results_display.insertRow(0)
+        self.results_display.setItem(0, 0, QTableWidgetItem(f"Searching for: {query}"))
         self.thread = SearchThread(query)
         self.thread.result_ready.connect(self.display_results)
         self.thread.start()
 
     def display_results(self, results):
-        self.results_display.clear()
-        for result in results:
-            item = QListWidgetItem(f"{result['name']} ({result['ticker']}) - {result['exchange']}")
-            self.results_display.addItem(item)
+        self.results_display.setColumnCount(3)
+        self.results_display.setHorizontalHeaderLabels(["Name", "Ticker", "Exchange"])
+        self.results_display.setRowCount(len(results))
+        for row_index, result in enumerate(results):
+            self.results_display.setItem(row_index, 0, QTableWidgetItem(result['name']))
+            self.results_display.setItem(row_index, 1, QTableWidgetItem(result['ticker']))
+            self.results_display.setItem(row_index, 2, QTableWidgetItem(result['exchange']))
 
+            # Adjust column widths after populating the table
+        small_cols_width = int(0.2 * self.results_display.width())
+        self.results_display.setColumnWidth(1, small_cols_width)
+        self.results_display.setColumnWidth(2, small_cols_width)
+        self.results_display.setColumnWidth(0, self.results_display.width() - 2 * small_cols_width)
+
+    def row_click(self, row, column):
+        name = self.results_display.item(row, 0).text()
+        ticker = self.results_display.item(row, 1).text()
+        exchange = self.results_display.item(row, 2).text()
+        print(f"Row {row} clicked: {name} ({ticker}) - {exchange}")
 
 class SearchThread(QThread):
     result_ready = pyqtSignal(list)
