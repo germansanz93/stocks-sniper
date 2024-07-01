@@ -9,13 +9,13 @@ def search_stock(search_input):
     search_results = search_ticker(search_input)
     return search_results
 
-def get_stock_info(ticker):
+def get_stock_info(exchange, ticker):
     # container = call_morningstar_valuation(ticker)
     # print(container)
     is_data_present = assert_directory_existence(ticker)
     if not is_data_present:
         dir = create_directory(ticker)
-        stock_response = call_morningstar_stock_id(ticker)
+        stock_response = call_morningstar_stock_id(exchange, ticker)
         save_in_file(f'{dir}/{ticker}-search.json', stock_response)
         stock_id = stock_response['page']['performanceID']
         valuation = call_morningstar_valuation(stock_id)

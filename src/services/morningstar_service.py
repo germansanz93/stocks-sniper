@@ -35,14 +35,11 @@ def call_get(uri):
     with requests.Session() as s:
         s.headers.update(headers)
         resp = s.get(uri, params=payload)
-        container = resp.json()
-        return container['components']['usSecurities']['payload']['results']
-
+        return resp.json()
 
 def search_ticker(search):
     search_uri = f'https://www.morningstar.com/api/v2/search?query={search}'
-    return call_get(search_uri)
-
+    return call_get(search_uri)['components']['usSecurities']['payload']['results']
 
 def call_morningstar_stock_id(exchange, ticker):
     stock_id_uri = f'https://www.morningstar.com/api/v2/stocks/{exchange}/{ticker}/quote'

@@ -65,6 +65,13 @@ class SearchWidget(QWidget):
         ticker = self.results_display.item(row, 1).text()
         exchange = self.results_display.item(row, 2).text()
         print(f"Row {row} clicked: {name} ({ticker}) - {exchange}")
+        self.thread = GetStockInfoThread(exchange, ticker)
+        self.thread.result_ready.connect(self.display_stock_info)
+        self.thread.start()
+
+    def display_stock_info(self, stock_info):
+        # Display the stock_info in the way you want
+        print(stock_info)
 
 class SearchThread(QThread):
     result_ready = pyqtSignal(list)
@@ -80,3 +87,15 @@ class SearchThread(QThread):
     def perform_search(self, query):
         # Replace the following with the actual implementation of get_stock_info
         return search_stock(query)
+
+class GetStockInfoThread(QThread):
+    result_ready = pyqtSignal(dict)
+
+    def __init__(self, exchange, ticker):
+        super().__init__()
+        self.ticker = ticker
+        self.exchange = exchange
+
+    def run(self):
+        stock_info = get_stock_info(self.exchange, self.ticker)
+        self.result_ready.emit(stock_info)
